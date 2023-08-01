@@ -1,0 +1,47 @@
+version: '3.8'
+
+services:
+  backend:
+    build: ./genesis
+    networks:
+      - ocular
+    volumes:
+      - ./data:/app/.data
+    environment:
+      - GENESIS_DB_PATH
+      - GENESIS_JWT_SECRET
+      - GENESIS_JWT_ACCESS_TOKEN_EXPIRATION
+      - GENESIS_JWT_REFRESH_TOKEN_EXPIRATION
+      - GENESIS_GIN_MODE
+      - GENESIS_LOG_MODE
+      - GENESIS_PORT
+      - GENESIS_CREATE_USERS
+      - GENESIS_KEY_PATTERN
+      - GENESIS_DATA_MAX_SIZE
+      - GENESIS_KEYS_PER_USER
+
+  frontend:
+    build:
+      context: ./ocular
+      args:
+        - OCULAR_ACKEE_HOST
+        - OCULAR_ACKEE_DOMAIN_ID
+        - OCULAR_GENESIS_HOST
+    networks:
+      - ocular
+
+  nginx:
+    image: nginx:latest
+    networks:
+      - ocular
+    ports:
+      - "80:80"
+    volumes:
+      - ./config/nginx.conf:/etc/nginx/nginx.conf
+    depends_on:
+      - backend
+      - frontend
+
+networks:
+  ocular:
+    driver: bridge
