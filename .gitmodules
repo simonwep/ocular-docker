@@ -1,6 +1,0 @@
-[submodule "ocular"]
-	path = ocular
-	url = https://github.com/simonwep/ocular
-[submodule "genesis"]
-	path = genesis
-	url = https://github.com/simonwep/genesis
