@@ -1,5 +1,11 @@
 <br/>
 
+<h3 align="center">
+    <img src="https://github.com/simonwep/openvpn-pihole/assets/30767528/a965ecf1-696e-46ea-85ad-87ce4bdb8791" alt="Logo" width="350">
+</h3>
+
+<br/>
+
 <div align="center">
   <h3>Ocular on Docker</h3>
   <h4>A ready-to-deploy docker compose setup for <a href="https://github.com/simonwep/ocular">ocular</a></h4>
