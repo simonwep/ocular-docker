@@ -2,7 +2,7 @@ version: '3.8'
 
 services:
   backend:
-    image: ghcr.io/simonwep/genesis:v0.1.0
+    image: ghcr.io/simonwep/genesis:v0.2
     restart: unless-stopped
     networks:
       - ocular
@@ -23,7 +23,7 @@ services:
       - GENESIS_LOG_MODE
 
   frontend:
-    image: ghcr.io/simonwep/ocular:v1.0.0
+    image: ghcr.io/simonwep/ocular:v1.1
     restart: unless-stopped
     networks:
       - ocular
