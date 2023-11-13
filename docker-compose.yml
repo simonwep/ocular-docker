@@ -3,6 +3,7 @@ version: '3.8'
 services:
   backend:
     image: ghcr.io/simonwep/genesis:v0.1.0
+    restart: unless-stopped
     networks:
       - ocular
     volumes:
@@ -23,11 +24,13 @@ services:
 
   frontend:
     image: ghcr.io/simonwep/ocular:v1.0.0
+    restart: unless-stopped
     networks:
       - ocular
 
   nginx:
     image: nginx:1.24-alpine
+    restart: unless-stopped
     networks:
       - ocular
     ports:
