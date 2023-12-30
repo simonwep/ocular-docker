@@ -13,6 +13,10 @@
 
 <br/>
 
+> [!NOTE]  
+> For release notes, check out the [latest release](https://github.com/simonwep/ocular/releases/latest) in the [ocular](https://github.com/simonwep/ocular) repository.
+> This repo is just for production releases :)
+
 ### Setup
 
 This is the docker-compose setup for [ocular](https://github.com/simonwep/ocular).
