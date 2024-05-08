@@ -1,11 +1,7 @@
-version: '3.8'
-
 services:
   backend:
-    image: ghcr.io/simonwep/genesis:v0.2
+    image: ghcr.io/simonwep/genesis:v1.0
     restart: unless-stopped
-    networks:
-      - ocular
     volumes:
       - ./data:/app/.data
     environment:
@@ -23,16 +19,12 @@ services:
       - GENESIS_LOG_MODE
 
   frontend:
-    image: ghcr.io/simonwep/ocular:v1.4.0
+    image: ghcr.io/simonwep/ocular:v1.4
     restart: unless-stopped
-    networks:
-      - ocular
 
   nginx:
     image: nginx:1.24-alpine
     restart: unless-stopped
-    networks:
-      - ocular
     ports:
       - "3030:80"
     volumes:
@@ -40,7 +32,3 @@ services:
     depends_on:
       - backend
       - frontend
-
-networks:
-  ocular:
-    driver: bridge
