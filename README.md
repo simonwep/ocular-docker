@@ -17,7 +17,7 @@
 > For release notes, check out the [latest release](https://github.com/simonwep/ocular/releases/latest) in the [ocular](https://github.com/simonwep/ocular) repository.
 > This repo is just for production releases :)
 
-### Setup
+### First time setup
 
 This is the docker-compose setup for [ocular](https://github.com/simonwep/ocular).
 To deploy it, follow these steps:
@@ -27,3 +27,13 @@ To deploy it, follow these steps:
 3. Run `./gen-passwords.sh` to generate secrets and an initial admin user.
 4. Run `docker compose up -d`.
 5. Ocular should be accessible under `http://localhost:3030` in your browser :)
+
+### Migrating to a new version
+
+To migrate to a newer version, follow these steps:
+
+1. Backup the `./data` folder. The folder contains all the user-data.
+2. Download the [latest release](https://github.com/simonwep/ocular-docker/releases/latest) and extract it.
+3. Copy the `.env.example` to `.env`, adjust the values if needed. You don't need to run `./gen-passwords.sh` again.
+4. Copy your old `./data` folder to the new location.
+5. Run `docker compose up -d`.
