@@ -1,6 +1,14 @@
 name: Bug Report
 description: Report a bug in the docker setup for Ocular
 body:
+  - type: checkboxes
+    attributes:
+      label: Support guidelines
+      description: Please read the faqs before proceeding.
+      options:
+        - label: I've read the [FAQs](https://github.com/simonwep/ocular-docker?tab=readme-ov-file#faq)
+          required: true
+
   - type: textarea
     attributes:
       label: Description

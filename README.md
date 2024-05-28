@@ -23,7 +23,7 @@ This is the docker-compose setup for [ocular](https://github.com/simonwep/ocular
 To deploy it, follow these steps:
 
 1. Download the [latest release](https://github.com/simonwep/ocular-docker/releases/latest) and extract it. Do not clone this repository!
-2. Copy the `.env.example` to `.env`, for normal usage you can leave the values as they are.
+2. Copy the `.env.example` to `.env`, if your app is only used locally make sure to set `GENESIS_JWT_COOKIE_ALLOW_HTTP` to `true` if you want to use it without https.
 3. Run `./gen-passwords.sh` to generate secrets and an initial admin user.
 4. Run `docker compose up -d`.
 5. Ocular should be accessible under `http://localhost:3030` in your browser :)
@@ -37,3 +37,11 @@ To migrate to a newer version, follow these steps:
 3. Copy the `.env.example` to `.env`, adjust the values if needed. You don't need to run `./gen-passwords.sh` again.
 4. Copy your old `./data` folder to the new location.
 5. Run `docker compose up -d`.
+
+
+### FAQ
+
+> Help! I can't log in to the app over the network!
+
+If you don't use https, make sure to set `GENESIS_JWT_COOKIE_ALLOW_HTTP` to `true` in your `.env` file.
+Otherwise, run it behind a reverse proxy like [nginx](https://www.nginx.com/) and get a free certificate from [letsencrypt](https://letsencrypt.org/).

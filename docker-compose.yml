@@ -1,6 +1,6 @@
 services:
   backend:
-    image: ghcr.io/simonwep/genesis:v1.0
+    image: ghcr.io/simonwep/genesis:v1.1
     restart: unless-stopped
     volumes:
       - ./data:/app/.data
@@ -11,6 +11,7 @@ services:
       - GENESIS_AUTHORIZED_URIS
       - GENESIS_JWT_SECRET
       - GENESIS_JWT_TOKEN_EXPIRATION
+      - GENESIS_JWT_COOKIE_ALLOW_HTTP
       - GENESIS_USERNAME_PATTERN
       - GENESIS_KEY_PATTERN
       - GENESIS_DATA_MAX_SIZE
