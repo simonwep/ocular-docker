@@ -19,6 +19,10 @@
 
 ### First time setup
 
+> [!CAUTION]
+> It is currently **not possible to reset the password** in case you forget yours!
+> Follow https://github.com/simonwep/genesis/issues/5 to get notified when this is added. (https://github.com/simonwep/ocular/discussions/51)
+
 This is the docker-compose setup for [ocular](https://github.com/simonwep/ocular).
 To deploy it, follow these steps:
 
