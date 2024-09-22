@@ -19,10 +19,6 @@
 
 ### First time setup
 
-> [!CAUTION]
-> It is currently **not possible to reset the password** in case you forget yours!
-> Follow https://github.com/simonwep/genesis/issues/5 to get notified when this is added. (https://github.com/simonwep/ocular/discussions/51)
-
 This is the docker-compose setup for [ocular](https://github.com/simonwep/ocular).
 To deploy it, follow these steps:
 
@@ -42,6 +38,19 @@ To migrate to a newer version, follow these steps:
 4. Copy your old `./data` folder to the new location.
 5. Run `docker compose up -d`.
 
+### Admin controls
+
+You can use [genesis's CLI](https://github.com/simonwep/genesis?tab=readme-ov-file#cli) to manage users.
+For example, to change a user's password:
+
+```sh
+docker run --rm -v "$(pwd)/data:/app/.data" --env-file .env ghcr.io/simonwep/genesis:latest users update --password {new password} {username}
+```
+
+For help run:
+```sh
+docker run --rm -v "$(pwd)/data:/app/.data" --env-file .env ghcr.io/simonwep/genesis:latest help
+```
 
 ### FAQ
 
