@@ -1,6 +1,6 @@
 services:
   backend:
-    image: ghcr.io/simonwep/genesis:v1.3
+    image: ghcr.io/simonwep/genesis:v1.3.1
     restart: unless-stopped
     volumes:
       - ./data:/app/.data
@@ -21,7 +21,7 @@ services:
       - GENESIS_LOG_MODE
 
   frontend:
-    image: ghcr.io/simonwep/ocular:v1.5
+    image: ghcr.io/simonwep/ocular:v1.6.0
     restart: unless-stopped
 
   nginx:
