@@ -3,7 +3,7 @@ set -eu
 
 # Function to check if a command exists
 command_exists() {
-  command -v "$1" >/dev/null 2>&1
+  $1 &>/dev/null
 }
 
 # Function to get the latest release version from a GitHub repository
@@ -20,7 +20,7 @@ if ! command_exists docker; then
 fi
 
 # Check if Docker Compose is installed
-if ! command_exists docker-compose; then
+if ! command_exists "docker compose"; then
   echo "Docker Compose is not available. Please install the latest version of Docker and try again."
   exit 1
 fi
