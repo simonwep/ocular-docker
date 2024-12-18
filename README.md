@@ -64,42 +64,4 @@ docker run --rm -v "$(pwd)/data:/app/.data" --env-file .env ghcr.io/simonwep/gen
 
 ## FAQ
 
-### Where can I find the release notes?
-
-For release notes, check out the [latest release](https://github.com/simonwep/ocular/releases/latest) in the [ocular](https://github.com/simonwep/ocular) repository.
-This repo is just for production releases :)
-
-### Help! I can't log in to the app over the network!
-
-If you don't use https, make sure to set `GENESIS_JWT_COOKIE_ALLOW_HTTP` to `true` in your `.env` file.
-Otherwise, run it behind a reverse proxy like [nginx](https://www.nginx.com/) and get a free certificate from [letsencrypt](https://letsencrypt.org/).
-
-Make sure to restart the app after changing the `.env` file via `docker compose restart`.
-
-### What kind of config do I need if I want to run it behind an nginx reverse proxy?
-
-Here's an example of a basic nginx config (v1.25+):
-
-```nginx
-server {
-    listen 443 quic reuseport;
-    listen 443 ssl;
-
-    server_name ocular.example.com;
-    add_header Alt-Svc 'h3=":443"; ma=86400';
-
-    location / {
-        proxy_set_header X-Forwarded-Host $host;
-        proxy_set_header X-Forwarded-Server $host;
-        proxy_set_header X-Forwarded-Proto $scheme;
-        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
-        proxy_set_header Host $host;
-        proxy_read_timeout 300s;
-        proxy_pass http://127.0.0.1:3030$request_uri;
-    }
-
-    # Specify the path to your certificate and key, or use letsencrypt
-    #ssl_certificate
-    #ssl_certificate_key 
-}
-```
+Head over to the [FAQs](FAQs.md) for more information.
