@@ -1,6 +1,6 @@
 services:
   backend:
-    image: ghcr.io/simonwep/genesis:v1.3.1
+    image: ghcr.io/simonwep/genesis:v1.4.0
     restart: unless-stopped
     volumes:
       - ./data:/app/.data
