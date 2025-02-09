@@ -21,7 +21,7 @@ services:
       - GENESIS_LOG_MODE
 
   frontend:
-    image: ghcr.io/simonwep/ocular:v1.8.1
+    image: ghcr.io/simonwep/ocular:v1.9.0
     restart: unless-stopped
 
   nginx:
