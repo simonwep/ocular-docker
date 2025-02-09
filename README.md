@@ -22,30 +22,33 @@ bash <(curl --proto '=https' --tlsv1.2 -sSf https://raw.githubusercontent.com/si
 ```
 
 > [!NOTE]
-> This will perform the same steps as described in the [manual setup](#manual-setup-and-migration) section and ask you questions if needed.
-> You can always [take a look at the script](setup.sh) before running it, or perform [these steps manually](#manual-setup-and-migration).
+> This will perform the same steps as described in the [manual setup](#manual-setup) section and ask you questions if needed.
+> You can always [take a look at the script](setup.sh) before running it, or perform [these steps manually](#manual-setup).
 
-## Manual setup and migration
-
-### First time setup
+## Manual setup
 
 This is the docker-compose setup for [ocular](https://github.com/simonwep/ocular).
 To deploy it, follow these steps:
 
 1. Download the [latest release](https://github.com/simonwep/ocular-docker/releases/latest) and extract it. Do not clone this repository!
-2. Copy the `.env.example` to `.env`, if your app is only used locally make sure to set `GENESIS_JWT_COOKIE_ALLOW_HTTP` to `true` if you want to use it without https.
+2. Copy the `.env.example` to `.env`, if your app is only used locally make sure to set `GENESIS_JWT_COOKIE_ALLOW_HTTP` to `true` if you want to use it without https, for example in an isolated network.
 3. Run `./gen-passwords.sh` to generate secrets and an initial admin user.
 4. Run `docker compose up -d`.
 5. Ocular should be accessible under `http://localhost:3030` in your browser :)
 
-### Migrating to a new version
+## Migrating to a new version
+
+> [!NOTE]
+> Usually it's sufficient to just bump the version inside the `docker-compose.yml` file.
+> However, sometimes new versions require new `.env`-variables or changes in the [config](config) folder.
+> This guide is to be 100%-sure that everything works as expected - but it's not always necessary.
 
 To migrate to a newer version, follow these steps:
 
-1. Backup the `./data` folder. The folder contains all the user-data.
-2. Download the [latest release](https://github.com/simonwep/ocular-docker/releases/latest) and extract it.
-3. Copy the `.env.example` to `.env`, adjust the values if needed. **You don't need to run `./gen-passwords.sh` again.**
-4. Copy your old `./data` folder to the new location.
+1. Stop all containers with `docker compose down`.
+2. Backup the `./data` folder and your `.env` file.
+3. Download the [latest release](https://github.com/simonwep/ocular-docker/releases/latest) and extract it.
+4. Copy your old `./data` folder and `.env` to the new directory, compare the `.env.example` with your `.env` and copy default values if needed.
 5. Run `docker compose up -d`.
 
 ## Admin controls
