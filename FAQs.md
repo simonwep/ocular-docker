@@ -4,7 +4,7 @@
 > Since this setup is fairly new, there might be some issues that are not covered here.
 
 This is a compilation of frequently asked questions and their answers.
-If you have a question that is not answered here, feel free to [open an issue](https://github.com/simonwep/ocular-docker/issues/new/choose) or a [pull request](https://github.com/simonwep/ocular-docker/compare).
+If you have a question that is not answered here, feel free to [open a discussion](https://github.com/simonwep/ocular-docker/discussions)!
 
 ## Table of Contents
 
@@ -12,6 +12,8 @@ If you have a question that is not answered here, feel free to [open an issue](h
 - [I can't log in to the app over the network!](#i-cant-log-in-to-the-app-over-the-network)
 - [What kind of config do I need if I want to run it behind a nginx reverse proxy?](#what-kind-of-config-do-i-need-if-i-want-to-run-it-behind-a-nginx-reverse-proxy)
 - [I'm having troubles deploying it on Traefik](#im-having-troubles-deploying-it-on-traefik)
+- [Should I use nginx in the docker compose.yaml file if I already have my own reverse proxy already set up?](#should-i-use-nginx-in-the-docker-composeyaml-file-if-i-already-have-my-own-reverse-proxy-already-set-up)
+- [When reverse proxying Ocular, which Docker service do I point to: frontend, backend, or nginx?](#when-reverse-proxying-ocular-which-docker-service-do-i-point-to-frontend-backend-or-nginx)
 
 ## Where can I find the release notes?
 
@@ -91,3 +93,18 @@ Required changes to make this work:
 > [!NOTE]
 > Traefik prioritizes routers based on the length of the rule, so since the `genesis` router has a larger rule length, it matches `/api` requests first.
 > This is necessary as if the `ocular` router picked up requests, it would return 501 Unimplemented statuses (this is hardcoded).
+
+## Should I use nginx in the docker compose.yaml file if I already have my own reverse proxy already set up?
+Yes, Ocular's nginx handles the _internal_ routing between the frontend and backend of Ocular.
+Your reverse proxy can be used to handle _external_ routing as usual.
+
+> As mentioned [here](https://github.com/simonwep/ocular-docker/discussions/11)
+
+## When reverse proxying Ocular, which Docker service do I point to: frontend, backend, or nginx?
+Point your reverse proxy to Ocular's nginx, which in turn will handle routing between everything else.
+It may be helpful to use a `container_name` for Ocular's nginx to distinguish it from your own reverse proxy (e.g., `ocular-nginx`).
+If both your reverse proxy and Ocular are on the same docker network, you can use the container name `ocular-nginx` and its default internal port `80`, such as in the screenshot below (NPM):
+
+![Screenshot 2025-02-16 101619](https://github.com/user-attachments/assets/f2ed13eb-0fab-4686-a74d-6f70a91a3cfb)
+
+> As mentioned [here](https://github.com/simonwep/ocular-docker/discussions/11)
