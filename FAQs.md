@@ -53,6 +53,18 @@ server {
     #ssl_certificate
     #ssl_certificate_key 
 }
+
+# HTTP Redirect
+server {
+	listen 80;
+	server_name ocular.example.com;
+
+	if ($host = ocular.example.com) {
+		return 301 https://$host$request_uri;
+	}
+
+	return 404;
+}
 ```
 
 ## I'm having troubles deploying it on [Traefik](https://traefik.io/traefik/)
