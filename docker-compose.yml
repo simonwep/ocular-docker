@@ -21,13 +21,13 @@ services:
       - GENESIS_LOG_MODE
 
   frontend:
-    image: ghcr.io/simonwep/ocular:v1.12.0
+    image: ghcr.io/simonwep/ocular:v1.13.0
     restart: unless-stopped
     environment:
       - OCULAR_DEMO
 
   nginx:
-    image: nginx:1.26-alpine
+    image: nginx:1.29-alpine
     restart: unless-stopped
     ports:
       - "3030:80"
