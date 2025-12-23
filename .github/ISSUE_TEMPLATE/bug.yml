@@ -6,7 +6,7 @@ body:
       label: Support guidelines
       description: Please read the faqs before proceeding.
       options:
-        - label: I've read the [FAQs](https://github.com/simonwep/ocular-docker?tab=readme-ov-file#faq)
+        - label: I've read the [FAQs](https://simonwep.github.io/ocular/pages/faq.html)
           required: true
 
   - type: textarea
