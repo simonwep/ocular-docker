@@ -22,5 +22,5 @@
 <br/>
 
 <h3 align="center">
-  The documentation has been moved <a href="https://simonwep.github.io/ocular/pages/deploy.html">here</a> :)
+  This repository is deprecated, please head over to <a href="https://github.com/simonwep/ocular">simonwep/ocular</a>.<br/>
 </h3>
