@@ -13,7 +13,7 @@
 
 
 <h6 align="center">
-  <a href="https://ocular.reinisch.io#demo">Demo</a> /
+  <a href="https://simonwep.github.io/ocular/demo">Demo</a> /
   <a href="https://simonwep.github.io/ocular/pages/quickstart.html">Quickstart</a> /
   <a href="https://simonwep.github.io/ocular/pages/examples.html">Deploy</a> /
   <a href="https://github.com/simonwep/ocular">Main Repo</a>
